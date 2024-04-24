@@ -1,0 +1,32 @@
+// script.js
+function uploadExam() {
+    const fileInput = document.getElementById('file-upload');
+    const file = fileInput.files[0];
+    if (file) {
+        // Here you can implement the logic to upload the file to the server
+        console.log('Uploading file:', file.name);
+    } else {
+        alert('Please select a file to upload.');
+    }
+}
+
+// Dummy data for exam list (to be replaced with actual data from the server)
+const exams = [
+    { name: 'Exam 1', marks: 80, review: 'Good', fileUrl: 'exam1.pdf' },
+    { name: 'Exam 2', marks: 75, review: 'Average', fileUrl: 'exam2.pdf' },
+    { name: 'Exam 3', marks: 90, review: 'Excellent', fileUrl: 'exam3.pdf' }
+];
+
+window.onload = function() {
+    const examList = document.getElementById('exam-list');
+    exams.forEach(exam => {
+        const listItem = document.createElement('li');
+        listItem.innerHTML = `
+            <span>${exam.name}</span>
+            <span>${exam.marks}</span>
+            <span>${exam.review}</span>
+            <a href="${exam.fileUrl}" download>Download</a>
+        `;
+        examList.appendChild(listItem);
+    });
+};
